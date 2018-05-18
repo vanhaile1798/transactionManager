@@ -34,6 +34,6 @@ app.use('/', index);
 app.use('/customers', customers);
 app.use('/transactions', transactions);
 
-app.listen(3030, function() {
+app.listen(process.env.PORT || 3030, function() {
 	console.log('Server is listening on port 3030');
 });
