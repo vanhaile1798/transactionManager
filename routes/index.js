@@ -5,7 +5,6 @@ var customers = {};
 router.get('/', function(req, res, next) {
 
 	var customers = req.session.customers;
-	console.log(customers);
 	res.render('index', {date: d, customers: customers});
 });
 
