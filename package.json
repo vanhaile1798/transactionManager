@@ -1,0 +1,26 @@
+{
+  "name": "transactionmanager",
+  "version": "1.0.0",
+  "description": "Transaction Manager ()\u001b[DMy first project)",
+  "engines": {
+    "node": "6.11.4"
+  },
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "vhail1798",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.3",
+    "nodemon": "^1.17.4",
+    "pug": "^2.0.3",
+    "morgan": "~1.9.0",
+    "serve-favicon": "~2.4.5",
+    "express-session": "*",
+    "body-parser": "~1.18.2",
+    "cookie-parser": "~1.4.3",
+    "mongoose": "~5.0.15",
+    "express-session": "*"
+  }
+}

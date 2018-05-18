@@ -1,0 +1,41 @@
+extends layout
+block content
+
+	script(src='/javascripts/showDetail.js')
+	link(rel='stylesheet', href='/stylesheets/tableStyle.css')
+
+	h1 List of customers
+
+	p
+		a(href='/customers/new') Create new customer
+	p= totalAmount
+	table
+		tr
+			th(width='10%') Position
+			th(width='50%') Name
+			th(colspan='2', width='20%') Option
+		- var i = 1;
+		- for (var customer in customers) {
+			tr
+				td= i
+				td
+					p= customer
+				td
+					button(type='button', onclick='showHide(this)') Show/Hide
+
+				td
+					form(action='/customers/delete/' + encodeURIComponent(customer), method='POST')
+						input(type='submit', value='Delete')
+
+			tr(hidden='true')
+				td
+				td
+					p Amount #{customers[customer].amount}
+					p Debt #{customers[customer].customerdebt}
+					p Note #{customers[customer].note}
+					p Created Date #{customers[customer].createddate}
+				td
+				td
+
+			- i++
+		- };

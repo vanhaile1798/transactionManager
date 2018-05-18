@@ -1,0 +1,40 @@
+extends layout
+block content
+
+	script(src='/javascripts/showDetail.js')
+	link(rel='stylesheet', href='/stylesheets/tableStyle.css')
+
+	h1 List of transactions
+
+	p
+		a(href='/transactions/new') Create new transaction
+	table
+		tr
+			th(width='10%') Position
+			th(width='50%') Name
+			th(colspan='2', width='20%') Option
+		- var i = 1;
+		- for (var transaction in transactions) { 
+			tr
+				td= i
+				td
+					p= transactions[transaction].customername
+				td
+					button(type='button', onclick='showHide(this)') Show/Hide
+
+				td
+					form(action='/transactions/delete/' + transaction, method='POST')
+						input(type='submit', value='Delete')
+
+			tr(hidden='true')
+				td
+				td
+					p Amount #{transactions[transaction].amount}
+					p Debt #{transactions[transaction].customerdebt}
+					p Note #{transactions[transaction].note}
+					p Created Date #{transactions[transaction].createddate}
+				td
+				td
+
+			- i++
+		- };

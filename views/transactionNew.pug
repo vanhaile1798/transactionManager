@@ -1,0 +1,43 @@
+extends layout
+block content
+	h1 New Transaction
+	
+	form(method='POST', action='/transactions')
+		table
+			tr
+				td
+					p
+						label(for='customername') Customer's Name
+				td
+					p
+						input#customername(name='customername')
+			tr
+				td
+					p
+						label(for='amount') Amount
+				td
+					p
+						input#name(name='amount')
+
+			tr
+				td
+					p
+						label(for="customerdebt") Customer's Debt
+				td
+					p
+						input#customerdebt(name="customerdebt")
+
+			tr
+				td
+					label(for='note') Note
+				td
+					textarea#note(name='note')
+			tr
+				td
+					p
+						label(for='setdate') Set Date
+				td
+					p
+						input#setdate(name='setdate')
+		p
+			input(type='submit', value='Create')
