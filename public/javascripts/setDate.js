@@ -1,2 +1,2 @@
-var inputtag = document.getElementsByTagName('input');
-var dateset = parseInt(inputtag[3].value);
+var date = new Date().toDateString();
+document.getElementById('setdate').value = date;

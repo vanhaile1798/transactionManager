@@ -1,26 +1,25 @@
 extends layout
 block content
-	- var today = date.toDateString()
+	- var today = date
 	- var totalAmount = 0
 	- var totalTodayAmount = 0
 	- var totalDebt = 0
 	- var customerNumber = 0
 	- var totalTodayTransactionNumber = 0
-	- for (var customer in customers) {
-		- var cus = customers[customer]
-		- if (today === cus.createddate) {
-			- totalTodayAmount += parseInt(customers[customer].amount)
-			- totalTodayTransactionNumber++
-		- }
-		- totalDebt += parseInt(cus.customerdebt)
-		- totalAmount += parseInt(customers[customer].amount)
-		- customerNumber++
+	- for (var sum in summary) {
+			- var sums = summary[sum]
+			- totalTodayAmount = sums.tdtotalamount
+			- totalTodayTransactionNumber = sums.tdtransactionnum
+			- totalDebt = sums.totaldebt
+			- totalAmount = sums.totalamount
+			- customerNumber = sums.customernum
 	- }
 	h1 Welcome to Transaction Manager
 	p Today is #{today}
-	h2 Total sum of money #{totalAmount}
+	h2 Total amount of money #{totalAmount}
 	h2 Customers' debt #{totalDebt}
 	h2 Number of customer #{customerNumber}
 	h2 Today's number of transaction #{totalTodayTransactionNumber}
-	h2 Today's amount of money #{totalTodayAmount} Yen
-	a(href='/customers') View list of customers
+	h2 Today's amount of money #{totalTodayAmount}
+	a(href='/customers') View list of customers<br />
+	a(href='/transactions') View list of transactions

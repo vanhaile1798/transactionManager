@@ -3,10 +3,11 @@ block content
 
 	script(src='/javascripts/showDetail.js')
 	link(rel='stylesheet', href='/stylesheets/tableStyle.css')
+	script(src='/javascripts/unavailable.js')
 
 	h1 List of customers
 
-	p
+	//- p
 		a(href='/customers/new') Create new customer
 	p= totalAmount
 	table
@@ -19,13 +20,13 @@ block content
 			tr
 				td= i
 				td
-					p= customer
+					p= customers[customer].customername
 				td
 					button(type='button', onclick='showHide(this)') Show/Hide
 
 				td
 					form(action='/customers/delete/' + encodeURIComponent(customer), method='POST')
-						input(type='submit', value='Delete')
+						input(type='submit', value='Delete', onclick='unavailable()')
 
 			tr(hidden='true')
 				td

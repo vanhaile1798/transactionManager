@@ -1,11 +1,20 @@
 var router = require('express').Router();
 
+var Customer = require('../data/models/customer');
+
 var customers = {};
 var date = new Date();
 
 router.get('/', function(req, res, next) {
-	console.log(req.session.customer);
-	res.render('customers', {customers: customers});
+	Customer.find({})
+			.sort({customername: 1})
+			.exec(function(err, customers) {
+				if (err) {
+					next(err);
+				}
+				res.render('customers', {customers: customers});
+			});
+	// console.log(req.session.customer);
 });
 
 router.get('/new', function(req, res, next) {
@@ -27,7 +36,7 @@ router.post('/', function(req, res, next) {
 });
 
 router.post('/delete/:customername', function(req, res, next) {
-	delete customers[req.params.customername];
+	// delete customers[req.params.customername];
 	res.redirect('/customers');
 });
 

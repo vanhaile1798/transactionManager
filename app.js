@@ -1,3 +1,6 @@
+// var dbURL = 'mongodb://vanhaile:12345678@ds229450.mlab.com:29450/transactionmanager';
+var dbURL = 'mongodb://127.0.0.1:27017/transaction';
+var db = require('mongoose').connect(dbURL);
 var express = require('express');
 var path = require('path');
 var logger = require('morgan');
