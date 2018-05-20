@@ -135,14 +135,14 @@ router.post('/', function(req, res, next) {
 	}
 	count++;*/
 
-	if (req.body.setdate === '') {
+	/*if (req.body.setdate === '') {
 		req.body.setdate = date.toDateString();
 	} else {
 		date.setDate(parseInt(req.body.setdate));
 		req.body.setdate = date.toDateString();
-	}
+	}*/
 	console.log(req.body.setdate);
-
+	
 	Customer.findOne({customername: req.body.customername}, function(err, document) {
 		if (err) {
 			next(err);
@@ -179,6 +179,12 @@ router.post('/', function(req, res, next) {
 				document.tdtransactionnum++;
 			}*/
 		if (document.today === req.body.setdate) {
+			document.tdtotalamount += parseInt(req.body.amount);
+			document.tdtransactionnum = document.tdtransactionnum + 1;
+		} else {
+			document.today = req.body.setdate;
+			document.tdtotalamount = 0;
+			document.tdtransactionnum = 0;
 			document.tdtotalamount += parseInt(req.body.amount);
 			document.tdtransactionnum = document.tdtransactionnum + 1;
 		}

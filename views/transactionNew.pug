@@ -32,12 +32,13 @@ block content
 					label(for='note') Note
 				td
 					textarea#note(name='note')
-			tr
+			tr(hidden='true')
 				td
 					p
 						label(for='setdate') Set Date
 				td
 					p
 						input#setdate(name='setdate')
+		script(src='/javascripts/setDate.js')
 		p
 			input(type='submit', value='Create')

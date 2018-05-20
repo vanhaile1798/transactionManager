@@ -15,13 +15,15 @@ router.get('/', function(req, res, next) {
 				
 				res.render('index', {date: d, customers: customers});
 			});*/
+	var today = new Date().toDateString();
+
 	Summary.find({})
 			.exec(function(err, summary) {
 				if (err) {
 					next(err);
 				}
 
-				res.render('index', {date:d, summary: summary});
+				res.render('index', {today: today, summary: summary});
 			});
 });
 
