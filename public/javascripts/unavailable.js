@@ -1,0 +1,3 @@
+function unavailable() {
+	alert('Unavailable');
+}
